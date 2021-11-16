@@ -19,7 +19,8 @@ requestDatabase.getModded = async function(currentId, currentChange){
     
     const updata = {
         id: currentId,
-        change: currentChange
+        change: currentChange,
+        progress: "running"
     }
     
     const cfg = {
@@ -31,7 +32,6 @@ requestDatabase.getModded = async function(currentId, currentChange){
     try{
         const respons = await fetch(url, cfg);
         const data = await respons.json();
-
         drawBoard(data);
     }
     catch(err){

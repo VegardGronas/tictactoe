@@ -10,7 +10,7 @@ router.get('/api/newBoard', (req, res, next) => {
 
 router.put('/api/moddedBoard', (req, res, next) => {
     const updata = req.body;
-    const data = db.getModded(updata.id, updata.change);
+    const data = db.getModded(updata.id, updata.change, updata.progress);
     res.status(200).json(data).end();
 })
 
