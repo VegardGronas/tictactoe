@@ -6,8 +6,18 @@
 }
 
 #container>div{
+    display: grid;
+    background-color: darkcyan;
     border: solid black 1px;
     text-align: center;
+}
+
+
+#container>:hover{
+    border: solid black 1px;
+    background-color: cadetblue;
+    text-align: right;
+    cursor: pointer;
 }
 
 #menu{
