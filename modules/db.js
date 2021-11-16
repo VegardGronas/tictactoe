@@ -21,9 +21,11 @@ dbMethods.getModded = function(id, currentChange){
                         value.boardStructure[i] = "X";
                     }
                     else{
+                        stop = true;
                         return value;
                     }
                 }
+
                 //SERVER CHOISE
                 if(serverChoise(value.boardStructure[i]) && !stop){
                     value.boardStructure[i] = "O";
