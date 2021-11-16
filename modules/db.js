@@ -36,11 +36,6 @@ dbMethods.getModded = function(id, currentChange){
     }
 }
 
-dbMethods.modBoard = function(updata){
-    console.log(updata);
-    return;
-}
-
 function serverChoise(value){
     if(parseInt(value)){
         return true;
