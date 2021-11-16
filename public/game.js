@@ -2,6 +2,7 @@ const container = document.getElementById("container");
 const menu = document.getElementById('menu');
 
 function drawBoard(board){
+    menu.innerHTML = "";
     container.innerHTML = "";
     for(let value of board.boardStructure){
         const div = document.createElement('div');
@@ -17,15 +18,15 @@ function drawBoard(board){
         }
     }
     if(board.progress !== "Running"){
-        startNewGame();
+        startNewGame(board);
     }
 }
 
-function startNewGame(){
+function startNewGame(board){
     menu.innerHTML = "";
     const div = document.createElement("div");
     const h1 = document.createElement('h1');
-    h1.innerHTML = "Game is over!";
+    h1.innerHTML = board.msg;
     const btn = document.createElement("button");
     btn.innerHTML = "Create new game";
     div.appendChild(h1);
