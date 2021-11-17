@@ -1,6 +1,6 @@
 const errorHandler = function(err, req, res, next){
     res.status(500).json({
-        error: "something when wrong on the server",
+        error: "something whent wrong on the server",
         desc: err
     }).end();
 }
