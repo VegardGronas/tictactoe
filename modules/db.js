@@ -12,25 +12,31 @@ dbMethods.newBoard = function(){
 
 dbMethods.getModded = function(id, currentChange){
     let stop = false;
+    let randomPos;
+    const openArray = [];
+
     for(let value of db){
         if(value.id === id){
             for(let i = 0; i < value.boardStructure.length; i++){
                 //PLAYER CHOISE
                 if(currentChange === value.boardStructure[i]){
-                    if(parseInt(value.boardStructure[i])){
+                    if(parseInt(value.boardStructure[i]) && !stop){
                         value.boardStructure[i] = "X";
                     }
                     else{
                         stop = true;
-                        return value;
                     }
                 }
 
                 //SERVER CHOISE
-                if(serverChoise(value.boardStructure[i]) && !stop){
-                    value.boardStructure[i] = "O";
-                    stop = true;
+                if(serverChoise(value.boardStructure[i])){
+                    openArray.push(i);
+                    randomPos = Math.floor(Math.random() * openArray.length);
                 }
+            }
+
+            if(!stop){
+                value.boardStructure[openArray[randomPos]] = "O";
             }
 
             if(checkWin(value.boardStructure)){
@@ -125,6 +131,13 @@ function checkWin(board){
             }
             else{
                 return {win: true, msg: "Better luck next time!"};
+            }
+        }
+        else{
+            const regEx = /[0-9]/g;
+            const string = board.join('');
+            if(!string.match(regEx)){
+                return {win: true, msg: "Draw"};
             }
         }
     }

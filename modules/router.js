@@ -9,7 +9,7 @@ router.get('/api/newBoard', (req, res, next) => {
         res.status(200).json(data).end();
     }
     else{
-        res.status(500).json({msg: "Server error"});
+        next(err);
     }
 })
 
@@ -20,7 +20,7 @@ router.put('/api/moddedBoard', (req, res, next) => {
         res.status(200).json(data).end();
     }
     else{
-        res.status(500).json({msg: "Server error"});
+        next(err);
     }
 })
 
