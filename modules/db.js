@@ -20,8 +20,11 @@ dbMethods.getModded = function(id, currentChange){
             for(let i = 0; i < value.boardStructure.length; i++){
                 //PLAYER CHOISE
                 if(currentChange === value.boardStructure[i]){
-                    if(parseInt(value.boardStructure[i])){
+                    if(parseInt(value.boardStructure[i]) && !stop){
                         value.boardStructure[i] = "X";
+                    }
+                    else{
+                        stop = true;
                     }
                 }
 
@@ -32,7 +35,9 @@ dbMethods.getModded = function(id, currentChange){
                 }
             }
 
-            value.boardStructure[openArray[randomPos]] = "O";
+            if(!stop){
+                value.boardStructure[openArray[randomPos]] = "O";
+            }
 
             if(checkWin(value.boardStructure)){
                 value.progress = "Ended";
